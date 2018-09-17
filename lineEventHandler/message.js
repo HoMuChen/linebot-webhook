@@ -1,5 +1,5 @@
-const sendMessage = require('../sendMessage');
-const sendUsage = require('../sendUsage');
+const sendMessage = require('../tasks/sendMessage');
+const sendUsage = require('../tasks/sendUsage');
 
 module.exports = (res, eventObj) => {
   if(eventObj.message.type === 'location') {

@@ -1,5 +1,5 @@
-const sendMessage = require('../sendMessage');
-const getNearest = require('../getNearest');
+const sendMessage = require('../tasks/sendMessage');
+const getNearest = require('../tasks/getNearest');
 
 module.exports = (res, eventObj) => {
   const data = JSON.parse(eventObj.postback.data);

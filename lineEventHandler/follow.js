@@ -1,4 +1,4 @@
-const sendUsage = require('../sendUsage');
+const sendUsage = require('../tasks/sendUsage');
 
 module.exports = (res, eventObj) => {
   console.log(`[Info] ${eventObj.source.userId} follow me at ${eventObj.timestamp}`);
