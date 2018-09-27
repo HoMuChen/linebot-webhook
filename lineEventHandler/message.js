@@ -15,6 +15,11 @@ module.exports = (res, eventObj) => {
         label: 'Ubike',
         displayText: 'Ubike！！！',
       },
+      {
+        search: 'convenience_store',
+        label: '便利商店',
+        displayText: '便利商店！！！',
+      },
     ];
 
     sendMessage({
