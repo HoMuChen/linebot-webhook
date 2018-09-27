@@ -1,10 +1,12 @@
 const sendMessage = require('../tasks/sendMessage');
 const getNearest = require('../tasks/getNearest');
 
+const modules = ['ubike', 'toilet', 'convenience_store', 'drink']
+
 module.exports = (res, eventObj) => {
   const data = JSON.parse(eventObj.postback.data);
 
-  if(data.search === 'ubike' || data.search === 'toilet' || data.search == 'convenience_store') {
+  if( modules.includes(data.search) ) {
     getNearest({
       search: data.search,
       latitude: data.latitude,

@@ -20,6 +20,11 @@ module.exports = (res, eventObj) => {
         label: '便利商店',
         displayText: '便利商店！！！',
       },
+      {
+        search: 'drink',
+        label: '飲料店',
+        displayText: '我要喝飲料！！！',
+      },
     ];
 
     sendMessage({
