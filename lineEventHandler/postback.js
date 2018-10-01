@@ -39,6 +39,11 @@ module.exports = (res, eventObj) => {
 
         return res.send('OK')
       })
+      .catch(e => {
+        console.log(`[Error] Something wrong when getNearset with message: ${e.message}`);
+
+        return res.send('OK')
+      })
   }else {
     sendMessage({
       replyToken: eventObj.replyToken,
