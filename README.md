@@ -1,5 +1,5 @@
 # linebot-webhook
-A webhook used as Line bot(@), deployed on google cloud functions 
+A webhook used as Line bot(@zpe1163t), deployed on google cloud functions 
 
 ## Configuration
 ``` bash 
@@ -17,4 +17,4 @@ $ gcloud beta functions deploy lineBotWebhook --env-vars-file ./envs/prod.env.ym
 ```
 - You have to setup [gcloud CLI](https://cloud.google.com/sdk/docs) in advanced
 - linebotwebhook is the function name export by `index.js`
-- `./envs/prod.env.yml` is the yaml file methoned above
+- `./envs/prod.env.yml` is the yaml file mentioned above
