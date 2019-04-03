@@ -25,6 +25,11 @@ module.exports = (res, eventObj) => {
         label: '飲料店',
         displayText: '我要喝飲料！！！',
       },
+      {
+        search: 'locations',
+        label: 'IG景點',
+        displayText: 'IG！！！',
+      },
     ];
 
     sendMessage({

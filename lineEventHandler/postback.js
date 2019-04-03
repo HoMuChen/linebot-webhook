@@ -1,7 +1,7 @@
 const sendMessage = require('../tasks/sendMessage');
 const getNearest = require('../tasks/getNearest');
 
-const modules = ['ubike', 'toilet', 'convenience_store', 'drink']
+const modules = ['ubike', 'toilet', 'convenience_store', 'drink', 'locations']
 
 module.exports = (res, eventObj) => {
   const data = JSON.parse(eventObj.postback.data);
@@ -25,15 +25,43 @@ module.exports = (res, eventObj) => {
             }]
           })
         }else {
+          const messages = data.search === 'locations'
+            ? [{
+                type: 'template',
+                altText: 'this is a carousel template',
+                template: {
+                  type: 'carousel',
+                  imageAspectRatio: 'square',
+                  columns: docs.map(doc => ({
+                    thumbnailImageUrl: doc.profile_pic_url,
+                    title: doc.name,
+                    text: `${doc.dist}公尺遠`,
+                    defaultAction: {
+                      type: "uri",
+                      label: "View detail",
+                      uri: `https:\/\/instmap.tw/locations/${doc.id}`
+                    },
+                    actions: [
+                      {
+                       type: "uri",
+                       label: "View detail",
+                       uri: `https:\/\/instmap.tw/locations/${doc.id}`
+                      }
+                    ]
+                  }))
+                }
+              }]
+            : docs.map(doc => ({
+                type: 'location',
+                title: `${doc.name || doc.doc.name} - ${Math.floor(doc.dist)}公尺遠`,
+                address: (doc.doc && doc.doc.address) || `${doc.media_count}篇貼文`,
+                latitude: doc.latitude || doc.doc.latitude,
+                longitude: doc.longitude || doc.doc.longitude,
+              }))
+
           sendMessage({
             replyToken: eventObj.replyToken,
-            messages: docs.map(doc => ({
-              type: 'location',
-              title: `${doc.doc.name} - ${Math.floor(doc.dist)}公尺遠`,
-              address: doc.doc.address || '',
-              latitude: doc.doc.latitude,
-              longitude: doc.doc.longitude,
-            }))
+            messages: messages,
           })
         }
 
